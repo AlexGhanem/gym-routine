@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <rect width="512" height="512" rx="96" fill="#0d0d0d"/>
+  <text x="256" y="200" text-anchor="middle" font-family="-apple-system,sans-serif" font-size="160" font-weight="700" fill="#ef9f27">G</text>
+  <rect x="136" y="260" width="240" height="4" rx="2" fill="#333"/>
+  <rect x="156" y="290" width="60" height="60" rx="8" fill="#e24b4a" opacity="0.9"/>
+  <rect x="226" y="290" width="60" height="60" rx="8" fill="#ef9f27" opacity="0.9"/>
+  <rect x="296" y="290" width="60" height="60" rx="8" fill="#378add" opacity="0.9"/>
+  <text x="186" y="328" text-anchor="middle" font-family="-apple-system,sans-serif" font-size="24" font-weight="600" fill="#fff">F</text>
+  <text x="256" y="328" text-anchor="middle" font-family="-apple-system,sans-serif" font-size="24" font-weight="600" fill="#000">M</text>
+  <text x="326" y="328" text-anchor="middle" font-family="-apple-system,sans-serif" font-size="24" font-weight="600" fill="#fff">R</text>
+  <text x="256" y="400" text-anchor="middle" font-family="-apple-system,sans-serif" font-size="40" font-weight="500" fill="#888" letter-spacing="8">GYM</text>
+</svg>

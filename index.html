@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Gym Card</title>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Gym Card">
+<meta name="theme-color" content="#0d0d0d">
+<link rel="manifest" href="manifest.json">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:#0d0d0d;color:#e8e6e0;padding:16px;padding-top:env(safe-area-inset-top,16px);max-width:480px;margin:0 auto;min-height:100vh;-webkit-user-select:none;user-select:none}
+h1{font-size:18px;font-weight:600;margin-bottom:4px;color:#fff}
+.sub{font-size:12px;color:#888;margin-bottom:20px}
+.tabs{display:flex;gap:6px;margin-bottom:16px;flex-wrap:wrap}
+.tab{padding:6px 14px;border-radius:20px;font-size:13px;font-weight:500;border:1px solid #333;background:transparent;color:#aaa;cursor:pointer;transition:all .2s;-webkit-tap-highlight-color:transparent}
+.tab.active{background:#fff;color:#000;border-color:#fff}
+.tab.floor{border-color:#e24b4a}
+.tab.floor.active{background:#e24b4a;color:#fff;border-color:#e24b4a}
+.tab.minimal{border-color:#ef9f27}
+.tab.minimal.active{background:#ef9f27;color:#000;border-color:#ef9f27}
+.tab.restart{border-color:#378add}
+.tab.restart.active{background:#378add;color:#fff;border-color:#378add}
+.panel{display:none}
+.panel.active{display:block}
+.card{background:#1a1a1a;border-radius:12px;padding:14px 16px;margin-bottom:10px}
+.card-title{font-size:14px;font-weight:600;margin-bottom:10px;color:#fff}
+.card-subtitle{font-size:11px;color:#888;margin-bottom:10px}
+.exercise{display:flex;justify-content:space-between;align-items:baseline;padding:6px 0;border-bottom:1px solid #222}
+.exercise:last-child{border-bottom:none}
+.ex-name{font-size:13px;color:#ccc;flex:1}
+.ex-sets{font-size:13px;font-weight:500;color:#fff;text-align:right;min-width:80px}
+.section-label{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.5px;color:#666;margin:14px 0 6px;padding-left:2px}
+.highlight{background:#1c2a1c;border:1px solid #2d4a2d;border-radius:8px;padding:10px 14px;margin-bottom:10px;font-size:12px;color:#8bc48b;line-height:1.5}
+.warning{background:#2a1c1c;border:1px solid #4a2d2d;border-radius:8px;padding:10px 14px;margin-bottom:10px;font-size:12px;color:#c48b8b;line-height:1.5}
+.info{background:#1c1c2a;border:1px solid #2d2d4a;border-radius:8px;padding:10px 14px;margin-bottom:10px;font-size:12px;color:#8b8bc4;line-height:1.5}
+.tag{display:inline-block;padding:2px 8px;border-radius:10px;font-size:11px;font-weight:500;margin-right:4px}
+.tag-cardio{background:#1a2a2a;color:#5dcaa5}
+.tag-strength{background:#2a1a2a;color:#c48bc4}
+.time{font-size:12px;color:#888;margin-top:8px;text-align:right}
+.version{font-size:10px;color:#444;text-align:center;margin-top:24px;padding-bottom:env(safe-area-inset-bottom,16px)}
+</style>
+</head>
+<body>
+
+<h1>Gym Reference Card</h1>
+<p class="sub">Tap a tier. Do the work. Leave.</p>
+
+<div class="tabs">
+  <button class="tab floor active" onclick="show('floor',this)">Floor</button>
+  <button class="tab minimal" onclick="show('minA',this)">Day A: Push</button>
+  <button class="tab minimal" onclick="show('minB',this)">Day B: Pull</button>
+  <button class="tab minimal" onclick="show('minC',this)">Day C: Legs</button>
+  <button class="tab restart" onclick="show('restart',this)">Restart</button>
+</div>
+
+<div id="floor" class="panel active">
+  <div class="warning">Worst week: illness, exams, crisis. 2 days, any 2 days. Just show up.</div>
+  <div class="card">
+    <div class="card-title">Floor Session</div>
+    <div class="card-subtitle"><span class="tag tag-cardio">cardio only</span> ~35 min</div>
+    <div class="exercise"><span class="ex-name">Rower — steady or intervals, your call</span><span class="ex-sets">20 min</span></div>
+    <div class="exercise"><span class="ex-name">Incline treadmill (10-12%, 3.0-3.5 mph)</span><span class="ex-sets">10 min</span></div>
+    <div class="exercise"><span class="ex-name">Hip flexors + hamstrings + chest stretch</span><span class="ex-sets">5 min</span></div>
+    <div class="time">No machines. No weights. No cables.</div>
+  </div>
+</div>
+
+<div id="minA" class="panel">
+  <div class="card">
+    <div class="card-title">Day A — Push + Rower</div>
+    <div class="card-subtitle"><span class="tag tag-strength">strength</span><span class="tag tag-cardio">cardio</span> ~55 min</div>
+
+    <div class="section-label">Warmup</div>
+    <div class="exercise"><span class="ex-name">Incline treadmill walk</span><span class="ex-sets">5 min</span></div>
+
+    <div class="section-label">Strength (~25 min)</div>
+    <div class="exercise"><span class="ex-name">Bench press (barbell)</span><span class="ex-sets">2 × 5-8</span></div>
+    <div class="exercise"><span class="ex-name">DB overhead press</span><span class="ex-sets">2 × 8-10</span></div>
+    <div class="exercise"><span class="ex-name">DB lateral raise</span><span class="ex-sets">2 × 12-15</span></div>
+
+    <div class="section-label">Rower (~20 min)</div>
+    <div class="exercise"><span class="ex-name">4 × 3 min hard / 2 min easy</span><span class="ex-sets">20 min</span></div>
+
+    <div class="section-label">Stretch</div>
+    <div class="exercise"><span class="ex-name">Chest doorway + triceps + upper back</span><span class="ex-sets">5 min</span></div>
+  </div>
+</div>
+
+<div id="minB" class="panel">
+  <div class="card">
+    <div class="card-title">Day B — Pull + Rower</div>
+    <div class="card-subtitle"><span class="tag tag-strength">strength</span><span class="tag tag-cardio">cardio</span> ~55 min</div>
+
+    <div class="section-label">Warmup</div>
+    <div class="exercise"><span class="ex-name">Incline treadmill walk</span><span class="ex-sets">5 min</span></div>
+
+    <div class="section-label">Strength (~25 min)</div>
+    <div class="exercise"><span class="ex-name">Lat pulldown (or pull-ups)</span><span class="ex-sets">2 × 5-8</span></div>
+    <div class="exercise"><span class="ex-name">Seated cable row</span><span class="ex-sets">2 × 8-10</span></div>
+    <div class="exercise"><span class="ex-name">Face pull</span><span class="ex-sets">2 × 12-15</span></div>
+
+    <div class="section-label">Rower (~20 min)</div>
+    <div class="exercise"><span class="ex-name">4 × 3 min hard / 2 min easy</span><span class="ex-sets">20 min</span></div>
+
+    <div class="section-label">Stretch</div>
+    <div class="exercise"><span class="ex-name">Lats + shoulders + biceps</span><span class="ex-sets">5 min</span></div>
+  </div>
+</div>
+
+<div id="minC" class="panel">
+  <div class="card">
+    <div class="card-title">Day C — Hex Bar + Legs + Rower</div>
+    <div class="card-subtitle"><span class="tag tag-strength">strength</span><span class="tag tag-cardio">cardio</span> ~55 min</div>
+
+    <div class="section-label">Warmup</div>
+    <div class="exercise"><span class="ex-name">Incline treadmill walk</span><span class="ex-sets">5 min</span></div>
+
+    <div class="section-label">Strength (~25 min)</div>
+    <div class="exercise"><span class="ex-name">Hex bar deadlift</span><span class="ex-sets">2 × 3-5</span></div>
+    <div class="exercise"><span class="ex-name">Leg press (or DB reverse lunge)</span><span class="ex-sets">2 × 10-12</span></div>
+    <div class="exercise"><span class="ex-name">Leg curl</span><span class="ex-sets">2 × 10-12</span></div>
+
+    <div class="section-label">Rower (~20 min)</div>
+    <div class="exercise"><span class="ex-name">4 × 3 min hard / 2 min easy</span><span class="ex-sets">20 min</span></div>
+
+    <div class="section-label">Stretch</div>
+    <div class="exercise"><span class="ex-name">Hip flexors + hamstrings + quads + left ankle</span><span class="ex-sets">5 min</span></div>
+  </div>
+  <div class="highlight">Left ankle: extra dorsiflexion stretching every leg day. Weight-bearing flexion test to track progress.</div>
+</div>
+
+<div id="restart" class="panel">
+  <div class="info">After any gap longer than 1 week. Do not resume where you left off.</div>
+  <div class="card">
+    <div class="card-title">Restart Protocol</div>
+    <div class="exercise"><span class="ex-name"><strong>Week 1:</strong> Floor only (2 sessions)</span><span class="ex-sets">Cardio</span></div>
+    <div class="exercise"><span class="ex-name"><strong>Week 2:</strong> Minimal at 60-70%</span><span class="ex-sets">3 sessions</span></div>
+    <div class="exercise"><span class="ex-name"><strong>Week 3+:</strong> Minimal at working weight</span><span class="ex-sets">3 sessions</span></div>
+  </div>
+  <div class="highlight">Strength returns in roughly half the time it took to build. Your musculoskeletal memory is intact. The ramp protects against DOMS and re-injury.</div>
+  <div class="card">
+    <div class="card-title">Reconditioning Session — 2 hours</div>
+    <div class="exercise"><span class="ex-name">Easy cycling warmup</span><span class="ex-sets">10 min</span></div>
+    <div class="exercise"><span class="ex-name">Cycling — steady state</span><span class="ex-sets">45 min</span></div>
+    <div class="exercise"><span class="ex-name">Light weights — all patterns at 60-70%</span><span class="ex-sets">45 min</span></div>
+    <div class="exercise"><span class="ex-name">Stretch (hips, hamstrings, left ankle)</span><span class="ex-sets">15 min</span></div>
+  </div>
+</div>
+
+<div class="version">v1.1 · March 19, 2026</div>
+
+<script>
+function show(id, btn) {
+  document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  btn.classList.add('active');
+}
+</script>
+</body>
+</html>
